@@ -8,13 +8,15 @@ namespace PortfolioBackend.Api.Services
 {
     public class EmailSettings
     {
-        public string SmtpServer { get; set; } = string.Empty;
-        public int SmtpPort { get; set; }
-        public string SenderEmail { get; set; } = string.Empty;
-        public string SenderName { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-        public string RecipientEmail { get; set; } = string.Empty;
+        public string SmtpServer { get; set; } = Environment.GetEnvironmentVariable("SMTP_SERVER") ?? "";
+        public int SmtpPort { get; set; } = int.Parse(Environment.GetEnvironmentVariable("SMTP_PORT") ?? "587");
+        public string SenderEmail { get; set; } = Environment.GetEnvironmentVariable("SMTP_SENDER_EMAIL") ?? "";
+        public string SenderName { get; set; } = Environment.GetEnvironmentVariable("SMTP_SENDER_NAME") ?? "";
+        public string Password { get; set; } = Environment.GetEnvironmentVariable("SMTP_PASSWORD") ?? "";
+        public string RecipientEmail { get; set; } = Environment.GetEnvironmentVariable("SMTP_RECIPIENT") ?? "";
     }
+
+
 
     public class EmailService
     {
