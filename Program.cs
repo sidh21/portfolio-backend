@@ -24,8 +24,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5174")
-                  .AllowAnyHeader()
+            policy.WithOrigins("http://localhost:5174","https://your-frontend.vercel.app")
+
+                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
 });
@@ -56,5 +57,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapGet("/", () => "Portfolio Backend is running!");
 app.Run();
