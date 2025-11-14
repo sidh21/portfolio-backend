@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5174","https://your-frontend.vercel.app")
+            policy.WithOrigins("http://localhost:5174", "https://portfolio-frontend-rho-liart.vercel.app")
 
                    .AllowAnyHeader()
                   .AllowAnyMethod();
